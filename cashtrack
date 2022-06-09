@@ -4,7 +4,7 @@ myCity="New_York" # Change this to your city
 
 echo -e "\n-------------------------\n"
 
-# money owed: acceptable syntax examples 10, 10,0, 10.00
+# money owed: acceptable syntax examples 10, 10.0, 10.00
 # (if you owe money use a negative number)
 read -p 'money owed : ' cash
 
