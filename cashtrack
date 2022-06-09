@@ -1,0 +1,28 @@
+#!/bin/bash
+
+myCity="New_York" # Change this to your city
+
+echo -e "\n-------------------------\n"
+
+read -p 'money owed : ' cash
+read -p 'comment : ' comm
+
+thedate=`TZ=America/$myCity date +"%Y-%m-%d %T"`
+
+oldNum=$(tail -n 1 $HOME/.cashtrack/cashTrackLog)
+
+echo "$thedate | $cash | $comm" >> $HOME/.cashtrack/cashTrackLog
+
+newNum=$(echo "$oldNum + $cash" | bc)
+
+echo "$newNum" >> $HOME/.cashtrack/cashTrackLog
+
+echo -e "\n$thedate | $cash | $comm\n"
+
+if [[ $newNum == *"-"* ]]; then
+    echo "  $newNum" | sed 's/-/I owe $/g' | sed 's/$/!/'
+else
+    echo "  I am owed \$$newNum!"
+fi
+
+echo -e "\n-------------------------\n"
