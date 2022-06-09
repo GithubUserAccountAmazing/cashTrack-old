@@ -4,7 +4,11 @@ myCity="New_York" # Change this to your city
 
 echo -e "\n-------------------------\n"
 
+# money owed: acceptable syntax examples 10, 10,0, 10.00
+# (if you owe money use a negative number)
 read -p 'money owed : ' cash
+
+#comment: intended for archival purposes
 read -p 'comment : ' comm
 
 thedate=`TZ=America/$myCity date +"%Y-%m-%d %T"`
